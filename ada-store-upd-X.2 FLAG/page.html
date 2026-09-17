@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ADA: Adaptive data DAshboard</title>
+  <link rel="stylesheet" href="page.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="intro-disclaimer" id="hide-intro-disclaimer">
+      <p class="intro-disclaimer-text">
+        We are a team of researchers from IIT Kharagpur, India, and MPI-SP, Germany, working towards the goal of
+        supporting users to better manage privacy of their online activity data.
+
+        Companies can collect a lot of personal and sensitive information about users (like yourself) from their online
+        activity, often unknown to the user. However, using data dashboards, it is possible to see and understand what
+        companies know about you.
+      </p>
+      <p>
+        To better facilitate this understanding, we built ADA: a personalised data dashboard. ADA learns your own notion
+        of sensitivity and supports you in visualising the collected data, helping you audit your online activity and
+        taking control of your privacy. To preserve your privacy, ADA works locally, i.e., your data never leaves your
+        browser.
+
+      </p>
+    </div>
+
+    <h1>Welcome to ADA: Adaptive data DAshboard</h1>
+
+    <div class="action-buttons">
+      <div class="action-intro-row">
+        <span class="action-intro-text">Haven't started creating your personalised data dashboard yet?</span>
+        <button id="btn">Start creating your personalised data dashboard</button>
+      </div>
+      <button id="train-btn" class="commit-feedback-btn hidden">Personalize dashboard with my feedback</button>
+    </div>
+
+    <p id="status" class="status"></p>
+
+    <div class="page-grid">
+
+      <aside class="hero-col" id="hide-hero-col">
+
+        <h2 class="hero-title">Why do you need ADA ?</h2>
+
+        <div class="hero-points">
+          <div class="hero-point">
+            <div class="hero-point-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <path d="M3 9h18" />
+                <path d="M7 14l2 2 2-3 2 4 2-3" />
+              </svg>
+            </div>
+            <p>Data dashboards are <strong>very powerful tools</strong> — they show you exactly what data these
+              platforms have about you. Google have their own data dashboard: <strong>My Google Activity</strong></p>
+          </div>
+
+          <div class="hero-point">
+            <div class="hero-point-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <p>This is about <strong>controlling information and protecting your privacy</strong>.</p>
+          </div>
+
+          <div class="hero-point">
+            <div class="hero-point-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 6h18" />
+                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                <path d="M10 11v6" />
+                <path d="M14 11v6" />
+                <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+              </svg>
+            </div>
+            <p>If you want, you can audit, even <strong>remove</strong> any of your data via Google's Activity
+              Dashboard.</p>
+          </div>
+        </div>
+
+        <a href="https://myactivity.google.com" target="_blank" rel="noopener" class="hero-dashboard-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              fill="#4285F4" />
+            <path
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              fill="#34A853" />
+            <path
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              fill="#FBBC05" />
+            <path
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              fill="#EA4335" />
+          </svg>
+          Click to view Google Activity Dashboard
+        </a>
+
+        <div class="hero-finding">
+          <span class="hero-finding-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 18h6" />
+              <path d="M10 22h4" />
+              <path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z" />
+            </svg>
+            <span class="hero-finding-tag-text">Our research shows</span>
+          </span>
+
+          <p class="hero-finding-lead">
+            Users need a personalised data dashboard for better privacy protection. Current dashboards are inadequate
+          </p>
+
+          <div class="hero-finding-result">
+            <span class="hero-finding-result-text">Hence we created a personalised data dashboard for you</span>
+            <span class="hero-finding-ada">ADA: Adaptive data DAshboard</span>
+          </div>
+        </div>
+
+        <p class="hero-closer">Give it a spin. Try this out in 4 easy steps</p>
+
+      </aside>
+
+      <div id="instructions-div" class="how-it-works">
+
+        <h2 class="how-it-works-title">How ADA works ?</h2>
+
+        <div class="steps-grid">
+
+          <div class="step-card">
+            <div class="step-head">
+              <div class="step-number">1</div>
+              <span class="step-title">Keep your Google Activity Dashboard open</span>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="16" rx="2" />
+                  <path d="M3 9h18" />
+                  <path d="M7 14l2 2 2-3 2 4 2-3" />
+                </svg>
+              </div>
+            </div>
+            <span class="step-description">Keep your Google Activity Dashboard open in another tab. Press the above
+              button <strong class="step-description__strong">"Start creating your personalised data dashboard"</strong>
+              to create a local dashboard</span>
+            <div class="step-screenshot">
+              <img src="./p1.png" alt="Google Activity Dashboard screenshot" class="step-screenshot-img" />
+            </div>
+            <span><strong class="step-description__strong_it">We never see your dashboard data: Absolute
+                privacy</strong></span>
+          </div>
+
+          <div class="step-card">
+            <div class="step-head">
+              <div class="step-number">3</div>
+              <span class="step-title">Provide feedback: Review ADA</span>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M21 12a9 9 0 1 1-9-9" />
+                  <path d="M21 3v6h-6" />
+                  <path d="M21 3l-7 7" />
+                </svg>
+              </div>
+            </div>
+            <span class="step-description">
+              If you feel the sensitivity scores of the content can be improved in the dashboard — you can <strong
+                class="step-description__strong">convey your feedback</strong> and ADA will adapt/personalise in real
+              time
+            </span>
+            <div class="step-screenshot">
+              <img src="./p2.png" alt="ADA feedback screenshot" class="step-screenshot-img" />
+            </div>
+            <span><strong class="step-description__strong_it">ADA listens to your feedback and customises itself
+                automatically for you</strong></span>
+          </div>
+
+          <div class="step-card">
+            <div class="step-head">
+              <div class="step-number">2</div>
+              <span class="step-title">Review the dashboard</span>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 2" />
+                </svg>
+              </div>
+            </div>
+            <span class="step-description">ADA gathers your data (in ~40–80 seconds) and presents it in a <strong
+                class="step-description__strong">personalised dashboard</strong> where more privacy-sensitive content
+              comes at top for easy auditing</span>
+          </div>
+
+          <div class="step-card">
+            <div class="step-head">
+              <div class="step-number">4</div>
+              <span class="step-title">Explore more privacy controls in ADA</span>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M3 6h18" />
+                  <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                  <path d="M10 11v6" />
+                  <path d="M14 11v6" />
+                  <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+                </svg>
+              </div>
+            </div>
+            <span class="step-description">After auditing, you can also <strong class="step-description__strong">delete
+                any data</strong> directly using ADA. Play around to know much more</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="ada-tagline" id="hide-tagline">
+      Use <span class="ada-tagline-accent">ADA</span> — get back control of your data through our dashboard
+    </div>
+
+    <div class="foot" id="privacy_footer_id"><a href="https://rajdeep-g.github.io/ADA-privacy/" target="_blank" rel="noopener">View our Privacy Policy</a></div>
+
+  </div>
+
+
+  <div id="search-wrapper" class="search-wrapper hidden">
+    <div class="search-top">
+      <input type="text" id="search-input" class="search-input" placeholder="Search activities..." />
+      <div class="filter-area">
+        <button id="open-filter" class="filter-btn tertiary" title="Filter by date/time">Filter</button>
+        <button id="clear-filter" class="clear-btn secondary hidden" title="Clear filter">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="results-container" class="results-container"></div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modalBox">
+      <div class="spinner"></div>
+      <span id="modal-message">Please wait while your data dashboard is being created</span>
+    </div>
+  </div>
+
+  <div id="confirmModal" class="modal hidden">
+    <div class="confirmModalBox">
+      <h3>Delete Activity</h3>
+      <p>Are you sure that you want to delete this activity?</p>
+      <p class="danger-text">This will also remove it from your Google Activity Dashboard and cannot be reverted back.
+      </p>
+      <div class="modal-buttons">
+        <button id="confirmYes" class="confirm-btn yes-btn">Yes, Delete</button>
+        <button id="confirmNo" class="confirm-btn no-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="filter-modal" class="modal hidden">
+    <div class="filter-card" role="dialog" aria-modal="true">
+      <h3>Filter by Date & Time</h3>
+      <div class="filter-grid">
+        <div class="filter-group">
+          <label for="start-datetime">From</label>
+          <input type="datetime-local" id="start-datetime" class="filter-input" />
+        </div>
+        <div class="filter-group">
+          <label for="end-datetime">To</label>
+          <input type="datetime-local" id="end-datetime" class="filter-input" />
+        </div>
+      </div>
+      <div class="filter-group">
+        <label for="activity-type-select">Activity Type</label>
+        <div id="activity-type-select" class="multiselect-container"></div>
+      </div>
+      <div class="filter-actions modal-actions">
+        <button id="apply-filter" class="filter-btn">Apply</button>
+        <button id="close-filter" class="filter-btn ghost">Cancel</button>
+        <button id="clear-filter" class="filter-btn secondary hidden" title="Clear filter">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="featureExtraction/lexicons.js"></script>
+  <script src="featureExtraction/stopwords_eng.js"></script>
+  <script src="featureExtraction/LIWC_dictionary.ts"></script>
+  <script src="featureExtraction/text-features-browser.js"></script>
+  <script src="render.js"></script>
+  <script src="page.js"></script>
+</body>
+<header class="top-nav">
+  <div class="nav-left">
+    <img src="icons/icon48.png" alt="ADA logo" style="width:28px;height:28px;">
+    <span class="nav-title"><strong>ADA</strong> Adaptive data DAshboard
+    </span>
+  </div>
+  <div class="nav-right">
+    <div class="code-badge">
+      <span class="code-badge__label">CODE</span>
+      <span id="unique-id" class="code-badge__value">—</span>
+    </div>
+  </div>
+</header>
+
+</html>

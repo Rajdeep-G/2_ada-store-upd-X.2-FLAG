@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "ADA: Adaptive data DAshboard",
+  "version": "1.1.1",
+  "description": "On-device sensitivity ranking for your Google activity data.",
+  "host_permissions": [
+    "https://myactivity.google.com/*",
+    "https://cdn.jsdelivr.net/*",
+    "http://134.209.215.255:8000/*"
+  ],
+  "permissions": ["storage"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://myactivity.google.com/*"],
+      "js": ["myactivity_delete.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "prediction-worker.js",
+        "training-worker.js",
+        "model.json",
+        "indexedDB.js",
+        "pyodide/*",
+        "featureExtraction/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Open page",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64 4 L116 24 L116 68 Q116 106 64 124 Q12 106 12 68 L12 24 Z" fill="#4f46e5"/>
+  <path d="M64 14 L106 30 L106 68 Q106 100 64 116 Q22 100 22 68 L22 30 Z" fill="#4338ca"/>
+  <rect x="32" y="70" width="18" height="34" rx="3" fill="#a5f3fc"/>
+  <rect x="55" y="55" width="18" height="49" rx="3" fill="#67e8f9"/>
+  <rect x="78" y="40" width="18" height="64" rx="3" fill="#ffffff"/>
+  <text x="64" y="118" text-anchor="middle" fill="white" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="18px" letter-spacing="3px">ADA</text>
+</svg>
