@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "ADA: Adaptive data DAshboard",
-  "version": "1.1.1",
-  "description": "On-device sensitivity ranking for your Google activity data.",
+  "version": "1.2.0",
+  "description": "On-device personalized dashboard for your Google activity data.",
   "host_permissions": [
     "https://myactivity.google.com/*",
     "https://cdn.jsdelivr.net/*",
