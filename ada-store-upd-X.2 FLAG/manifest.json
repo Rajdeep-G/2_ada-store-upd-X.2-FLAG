@@ -7,6 +7,7 @@
     "https://myactivity.google.com/*",
     "https://cdn.jsdelivr.net/*",
     "http://134.209.215.255:8000/*"
+
   ],
   "permissions": ["storage"],
   "content_security_policy": {

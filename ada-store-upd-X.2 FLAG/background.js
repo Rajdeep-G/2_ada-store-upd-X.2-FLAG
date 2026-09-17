@@ -43,7 +43,7 @@ async function logEnableEvent() {
     const url = `${base}/enable`;
     const participantUuid = await getOrCreateParticipantUuid();
     const at = new Date().toISOString();
-
+    const tFlag = await getOrCreateTFlag();
     await fetch(url, {
       method: "POST",
       headers: {
@@ -52,6 +52,7 @@ async function logEnableEvent() {
       body: JSON.stringify({
         participant_uuid: participantUuid,
         at,
+        t_flag: tFlag,
       }),
     });
 

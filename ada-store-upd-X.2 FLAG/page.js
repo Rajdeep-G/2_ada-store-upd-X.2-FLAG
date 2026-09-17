@@ -9,7 +9,7 @@ const remove_div = document.getElementById("instructions-div");
 const hero_hide = document.getElementById("hide-hero-col");
 const tagline_hide = document.getElementById("hide-tagline");
 const intro_disclaimer_hide = document.getElementById("hide-intro-disclaimer");
-const privacy_footer=document.getElementById("privacy_footer_id");
+const privacy_footer = document.getElementById("privacy_footer_id");
 
 let trainingWorker = null;
 let hasPreviousData = false;
@@ -19,6 +19,52 @@ let hasPreviousData = false;
 let lastTopPredictionMap = null;
 
 
+// let cachedTFlag = null;
+async function getOrCreateTFlag() {
+  const { t_flag: stored } = await chrome.storage.local.get("t_flag");
+  if (stored === 0 || stored === 1) {
+    return stored;
+  }
+
+  const flag = Math.random() < 0.5 ? 0 : 1;
+  await chrome.storage.local.set({ t_flag: flag });
+  return flag;
+}
+
+let tFlagReady = (async () => {
+  cachedTFlag = await getOrCreateTFlag();   // no "let" — assigns to render.js's variable
+  applyLandingPageTFlagText();
+})();
+
+function applyLandingPageTFlagText() {
+  const flagAlterText = document.getElementById("flag_alter_text");
+  if (flagAlterText && cachedTFlag === 0) {
+    flagAlterText.textContent = `To better facilitate this understanding, we built ADA: a data dashboard for auditing your online activity. ADA organizes your Google Activity data and supports you in visualising the collected data, helping you audit your online activity and taking control of your privacy. To preserve your privacy, ADA works locally, i.e., your data never leaves your browser.`;
+  }
+
+  const flagAlterText_s2 = document.getElementById("flag_alter_text_s2");
+  if (flagAlterText_s2 && cachedTFlag === 0) {
+    flagAlterText_s2.innerHTML = `If you feel differently about an item shown in the dashboard— you can <strong class="step-description__strong">convey your feedback</strong> and ADA will adapt or personalise to your preferences in real time.`;
+    // flagAlterText_s2.textContent = `If you feel differently about an item shown in the dashboard— you can convey your feedback and ADA will adapt or personalise to your preferences in real time.`;
+  }
+  const flagAlterText_s3 = document.getElementById("flag_alter_text_s3");
+  if (flagAlterText_s3 && cachedTFlag === 0) {
+    flagAlterText_s3.innerHTML = `ADA gathers your data (in ~40–80 seconds) and presents it in a <strong class="step-description__strong">personalised dashboard</strong>, similar to your Google Activity Dashboard, for easy auditing.`;
+  }
+
+
+  const flagAlterImgS2 = document.getElementById("flag_alter_img_s2");
+  if (flagAlterImgS2 && cachedTFlag === 0) {
+    flagAlterImgS2.src = "./p2_variant.png";
+    flagAlterImgS2.alt = "ADA feedback screenshot (variant)"; // update alt text too, if it's genuinely different content
+  }
+
+
+  const mainWrap = document.getElementById("main-wrap");
+  if (mainWrap) {
+    mainWrap.style.visibility = "visible";
+  }
+}
 // Tell background to start pinging when this page loads
 chrome.runtime.sendMessage({ type: "ada:ui-opened" });
 
@@ -393,7 +439,7 @@ trainBtn?.addEventListener("click", async () => {
   showModal("Now personalising your dashboard…");
 
   //  add a sleeep of 5 seconds
-  
+
 
   if (typeof logUiEvent === "function") {
     logUiEvent("retrain_model_withfeedback", null, null);
@@ -451,7 +497,7 @@ trainBtn?.addEventListener("click", async () => {
         renderItems(items);
 
         try {
-          chrome.storage.local.set({ myactivity_extracted_items: items }, () => {});
+          chrome.storage.local.set({ myactivity_extracted_items: items }, () => { });
         } catch (e) {
           console.warn("Failed to persist updated items:", e);
         }
@@ -482,6 +528,7 @@ trainBtn?.addEventListener("click", async () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+
   const storage = typeof chrome !== "undefined" && chrome.storage && chrome.storage.local
     ? chrome.storage.local
     : null;
@@ -827,7 +874,7 @@ function predictScoresForItems(items) {
 //       // Backward compatibility: if background still returns items/count
 //       hideModal();
 //       statusEl.textContent = `Completed collecting ${resp.count ?? 0} items to create your dashboard.`;
-      
+
 //     }
 //   );
 // });
@@ -987,7 +1034,7 @@ btn.addEventListener("click", () => {
       // Backward compatibility: if background still returns items/count
       hideModal();
       statusEl.textContent = `Completed collecting ${resp.count ?? 0} items to create your dashboard.`;
-      
+
     }
   );
 });
