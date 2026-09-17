@@ -44,9 +44,9 @@ function applyLandingPageTFlagText() {
 
   const flagAlterText_s2 = document.getElementById("flag_alter_text_s2");
   if (flagAlterText_s2 && cachedTFlag === 0) {
-    flagAlterText_s2.innerHTML = `If you feel differently about an item shown in the dashboard— you can <strong class="step-description__strong">convey your feedback</strong> and ADA will adapt or personalise to your preferences in real time.`;
-    // flagAlterText_s2.textContent = `If you feel differently about an item shown in the dashboard— you can convey your feedback and ADA will adapt or personalise to your preferences in real time.`;
-  }
+    flagAlterText_s2.innerHTML = `If you'd like your dashboard to feel more <strong class="step-description__strong">personalised</strong>, you can share your feedback for each activity and ADA will adapt to your preferences.`;
+    // flagAlterText_s2.innerHTML = `If you feel differently about an item shown in the dashboard— you can <strong class="step-description__strong">convey your feedback</strong> and ADA will adapt or personalise to your preferences in real time.`;
+    }
   const flagAlterText_s3 = document.getElementById("flag_alter_text_s3");
   if (flagAlterText_s3 && cachedTFlag === 0) {
     flagAlterText_s3.innerHTML = `ADA gathers your data (in ~40–80 seconds) and presents it in a <strong class="step-description__strong">personalised dashboard</strong>, similar to your Google Activity Dashboard, for easy auditing.`;
